@@ -89,7 +89,7 @@ int main() {
   
   <p>Input and output operations refers to operations like determining the size of the screen,reading input keypresses from the keyboad and mapping them as a special function(Eg. Ctrl-Q), if necessary.It also includes some minor tweaks like refreshing or clearng the screen and determining the cursor positions so that it doesent go off screen.Also includes displaying the cursor position on the screen with the help of tildes.</p>
     
-  <textarea>
+  <textarea style="width:50vw;height:30vh;margin-left:auto;margin-right:auto;">
 
 /*** includes ***/
 #include ctype.h
@@ -395,7 +395,7 @@ int main() {
 <p>In this chapter, we also create a way to add content to the editor using a buffer-ABUF_INIT.String manipulation and memory allocation is also given importance in this chapter,seen mostly while using functions related to the buffer.</p><br>
       <b>3.A text viewer</b><br>
       This chapter deals with making the text editor more user friendly by including files, scrolling(horizontal and vertical) while mapping some special keys to move up and down the editor page, including interactions of spaces and tabs with text,some small quirks like moving to the end of the line or moving around using the arrow keys and also, a status bar at the bottom of the screen which displays useful information.   
-<textarea>
+<textarea style="width:50vw;height:30vh;margin-left:auto;margin-right:auto;">
 
 /*** includes ***/
 
@@ -907,7 +907,7 @@ int main(int argc, char *argv[]) {
    <b>4.A Text Editor</b><br>
   
  <p>In this chapter,we modfify our text viewer into a proper text editor by including operations like inserting characters,saving files to disk, creating a more efficient status bar by indicating modifications,warnings,more errors possible, deletion of characters and insertion of new lines using the keyboard. This converts the text viewer into a proper text editor with all the essential operations available.</p> 
-   <textarea>
+   <textarea style="width:50vw;height:30vh;margin-left:auto;margin-right:auto;">
 /*** includes ***/
 
 #define _DEFAULT_SOURCE
@@ -1630,7 +1630,7 @@ int main(int argc, char *argv[]) {
 
 
      
-<textarea>
+<textarea style="width:50vw;height:30vh;margin-left:auto;margin-right:auto;">
 "/*** includes ***/
 #define _DEFAULT_SOURCE
 #define _BSD_SOURCE
@@ -2418,7 +2418,7 @@ int main(int argc, char *argv[]) {
   
  <b>6.Syntax Highlighting</b><br>This chapter deals mainly with syntax highlighting and filetype detection.<br>
  
- <textarea>
+ <textarea style="width:50vw;height:30vh;margin-left:auto;margin-right:auto;">
 /*** includes ***/
 #define _DEFAULT_SOURCE
 #define _BSD_SOURCE
