@@ -2405,11 +2405,11 @@ int main(int argc, char *argv[]) {
    
    
    </textarea><br><p>At this point,most of the necessary functions have already been implemented. This is one of the operations that makes the interface far easier to use- a search function. First, we use <b>editorFind()</b> to check whether or not we want to search for something, then use <b>editorRowRxtoCx()</b> to iterate through all the rows,searching for the specified string. We then map Ctrl-F to the <b>editorFind()</b> function for easy access. To make searching easier, <b>editorPrompt()</b> is used in order to find the result while the string is being typed. After that, small adjustments and conditions are added to <b>editorFindCallBack()</b> so that arrow keys can be used to search back and forth and that the cursor regains its original position after searching.</p><br><figure> 
-   <img src="https://imgur.com/11PJLX9.png" alt=Chapter5-1 width="400" height="300">
+   <img src="https://imgur.com/11PJLX9.png" alt="Chapter5-1" width="400" height="300">
    <figcaption>Input and Output displayed on screen</figcaption>
-   <img src="https://imgur.com/rIo9w6q.png" alt=Chapter5-3 width="400" height="300">
+   <img src="https://imgur.com/rIo9w6q.png" alt="Chapter5-2" width="400" height="300">
    <figcaption>Search function being used</figcaption>
-   <img src="https://imgur.com/W7xptJz.png" alt=Chapter5-3 width="400" height="300">
+   <img src="https://imgur.com/W7xptJz.png" alt="Chapter5-3" width="400" height="300">
    <figcaption>Result being highlighted</figcaption>
   </figure> <br>
   
@@ -3462,7 +3462,7 @@ int main(int argc, char *argv[]) {
    <p>More additions are made to the structure and <b>editorUpdateSyntax()</b> in order to highlight strings, single line comments,multiple line comments and single line comments inside multiple line comments.This concludes the building of the Antirez Kilo Editor.</p>
 
   <figure>
-   <img src="https://imgur.com/G2w7L82.png " alt=CHapter6 width="600" height="400" class="image">
+   <img src="https://imgur.com/G2w7L82.png " alt="CHapter6" width="600" height="400" class="image">
    <figcaption>Proper syntax highlighting for all types</figcaption>
   <figure>
 
