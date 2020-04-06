@@ -3474,6 +3474,5 @@ int main(int argc, char *argv[]) {
   
    <a href="https://viewsourcecode.org/snaptoken/kilo/index.html">Link to actual editor guide</a>
    <br><br>
-</body>
-</html>
+
 
