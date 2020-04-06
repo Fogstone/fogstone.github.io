@@ -15,7 +15,7 @@
    <li>Syntax highlighting</li></ol>
           
 <p>So the first 2 steps include installing a C compiler and enabling raw mode in terminal,mainly because canonical mode, the default mode in all terminals does not work for applications with complex user interfaces where there are many processes to be run at once. Installing a compiler can be done pretty easily by using administrator commands in the respective operating systems, or installing an IDE in some cases,like Windows.</p><br>
-1.Enabling raw mode<br><br>
+<b>1.Enabling raw mode</b><br><br>
           
 <textarea>
  
@@ -85,7 +85,7 @@ int main() {
     
 <p> The above code refers to disabling canonical mode,which is by default enabled in terminals. Firstly, we disable the ICANON flag to enable raw mode, then go on to modify terminal attributes using commands like <b>tcsettatr</b> and <b>tcgettatr</b>. We also disable various keys such that they display their ASCII values like <b>Ctrl-Q,Ctrl-Z,Ctrl-V</b> etc.Error handling tasks are also implemented by using <b>perror(),errno and EAGAIN</b>.</p>
 
-2.Input and output operations<br>
+<b>2.Input and output operations</b><br>
   
   <p>Input and output operations refers to operations like determining the size of the screen,reading input keypresses from the keyboad and mapping them as a special function(Eg. Ctrl-Q), if necessary.It also includes some minor tweaks like refreshing or clearng the screen and determining the cursor positions so that it doesent go off screen.Also includes displaying the cursor position on the screen with the help of tildes.</p>
     
@@ -393,7 +393,7 @@ int main() {
    </figure>
 <p>We also use switch statements with multiple cases to map keys like CTRL-Q,all four arrow keys to move the cursor in different directions,Page Down and Page Up,Home,End and Delete keys.This is done using <b>editorKeyProcess()</b> and <b>EditorReadKey()'s</b> function is to read a single keypress as input and return it for formatting.Various formatting operations are done such as clearing and refreshing the screens using their respective functions which makes the interface easier and simple for the user(<b>EditorRefreshScreen(),die(),editorDrawRows()</b>).editorDrawRows() and getWindowSize() are complementary to each other and can be done in 2 different ways,as illustrated in the tutorial.Cursor positions are determined and modified using functions like <b>getCursorPosition</b>,which is then returned into a global construct which stores most useful variables, like number of screenrows and total number of rows etc.</p><br>
 <p>In this chapter, we also create a way to add content to the editor using a buffer-ABUF_INIT.String manipulation and memory allocation is also given importance in this chapter,seen mostly while using functions related to the buffer.</p><br>
-      3.A text viewer<br>
+      <b>3.A text viewer</b><br>
       This chapter deals with making the text editor more user friendly by including files, scrolling(horizontal and vertical) while mapping some special keys to move up and down the editor page, including interactions of spaces and tabs with text,some small quirks like moving to the end of the line or moving around using the arrow keys and also, a status bar at the bottom of the screen which displays useful information.   
 <textarea>
 
@@ -904,7 +904,7 @@ int main(int argc, char *argv[]) {
      <figcaption>Text viewer</figcaption>
   </figure>
    
-   4.A Text Editor<br>
+   <b>4.A Text Editor</b><br>
   
  <p>In this chapter,we modfify our text viewer into a proper text editor by including operations like inserting characters,saving files to disk, creating a more efficient status bar by indicating modifications,warnings,more errors possible, deletion of characters and insertion of new lines using the keyboard. This converts the text viewer into a proper text editor with all the essential operations available.</p> 
    <textarea>
@@ -1626,7 +1626,7 @@ int main(int argc, char *argv[]) {
 
   
    
-5.Search Operations<br>This chapter deals with search operations and all the possible ways to utilize those operations. It consists of implementing a search function,then using arrow keys to search back and forth and returning the cursor positions when finished.
+<b>5.Search Operations</b><br>This chapter deals with search operations and all the possible ways to utilize those operations. It consists of implementing a search function,then using arrow keys to search back and forth and returning the cursor positions when finished.
 
 
      
@@ -2416,7 +2416,7 @@ int main(int argc, char *argv[]) {
   </figure> <br>
   
   
- 6.Syntax Highlighting<br>This chapter deals mainly with syntax highlighting and filetype detection.<br>
+ <b>6.Syntax Highlighting</b><br>This chapter deals mainly with syntax highlighting and filetype detection.<br>
  
  <textarea>
 /*** includes ***/
