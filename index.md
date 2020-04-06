@@ -1627,11 +1627,10 @@ int main(int argc, char *argv[]) {
        5.Search operations<br>
 <p>This chapter deals with search operations and all the possible ways to utilize those operations. It consists of implementing a search function,then using arrow keys to search back and forth and returning the cursor positions when finished.</p>
      <textarea>
-/*** includes ***/
+"/*** includes ***/
 #define _DEFAULT_SOURCE
 #define _BSD_SOURCE
 #define _GNU_SOURCE
-
 #include ctype.h
 #include errno.h
 #include fcntl.h
@@ -1644,7 +1643,7 @@ int main(int argc, char *argv[]) {
 #include termios.h
 #include time.h
 #include unistd.h
-
+ 
 /*** defines ***/
 
 #define KILO_VERSION "0.0.1"
@@ -1665,16 +1664,13 @@ enum editorKey {
   PAGE_UP,
   PAGE_DOWN
 };
-
-/*** data ***/
-
+/** data ***/
 typedef struct erow {
   int size;
   int rsize;
   char *chars;
   char *render;
 } erow;
-
 struct editorConfig {
   int cx, cy;
   int rx;
@@ -1775,11 +1771,9 @@ int editorReadKey() {
     return c;
   }
 }
-
 int getCursorPosition(int *rows, int *cols) {
   char buf[32];
   unsigned int i = 0;
-
   if (write(STDOUT_FILENO, "\x1b[6n", 4) != 4) return -1;
 
   while (i < sizeof(buf) - 1) {
@@ -2403,7 +2397,7 @@ int main(int argc, char *argv[]) {
   }
 
   return 0;
-       }</textarea>
+       } " </textarea><br>
    
  <p>At this point,most of the necessary functions have already been implemented. This is one of the operations that makes the interface far easier to use- a search function. First, we use <b>editorFind()</b> to check whether or not we want to search for something, then use <b>editorRowRxtoCx()</b> to iterate through all the rows,searching for the specified string. We then map Ctrl-F to the <b>editorFind()</b> function for easy access. To make searching easier, <b>editorPrompt()</b> is used in order to find the result while the string is being typed. After that, small adjustments and conditions are added to <b>editorFindCallBack()</b> so that arrow keys can be used to search back and forth and that the cursor regains its original position after searching.</p>
       
