@@ -1,11 +1,4 @@
-<style>
-     textarea {
-          width: 50vw;
-          height: 30vh;
-	  margin-left: auto;
-	  margin-right: auto;
-     }
-</style>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8"> 
 <h1>A Blog on Antirez Kilo Editor</h1>
@@ -1629,7 +1622,7 @@ int main(int argc, char *argv[]) {
      <figcaption>Using Save Function</figcaption>
      <img src="https://imgur.com/i1Y87Od.png" alt="Chapter 4-3" width="400" height="300">
      <figcaption>File Saved to Disk</figcaption>
-  </figure>	<br>
+  </figure>
 
   
    
