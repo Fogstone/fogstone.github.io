@@ -1626,7 +1626,7 @@ int main(int argc, char *argv[]) {
 
   
    
-5.Search Operations<br><p>This chapter deals with search operations and all the possible ways to utilize those operations. It consists of implementing a search function,then using arrow keys to search back and forth and returning the cursor positions when finished.</p>
+5.Search Operations<br>This chapter deals with search operations and all the possible ways to utilize those operations. It consists of implementing a search function,then using arrow keys to search back and forth and returning the cursor positions when finished.
 
 
      
