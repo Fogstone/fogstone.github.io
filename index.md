@@ -169,10 +169,8 @@ int editorReadKey() {
 
   if (c == '\x1b') {
     char seq[3];
-
     if (read(STDIN_FILENO, &seq[0], 1) != 1) return '\x1b';
     if (read(STDIN_FILENO, &seq[1], 1) != 1) return '\x1b';
-
     if (seq[0] == '[') {
       if (seq[1] >= '0' && seq[1] <= '9') {
         if (read(STDIN_FILENO, &seq[2], 1) != 1) return '\x1b';
@@ -203,7 +201,6 @@ int editorReadKey() {
         case 'F': return END_KEY;
       }
     }
-
     return '\x1b';
   } else {
     return c;
@@ -284,7 +281,6 @@ void editorDrawRows(struct abuf *ab) {
     } else {
       abAppend(ab, "~", 1);
     }
-
     abAppend(ab, "\x1b[K", 3);
     if (y < E.screenrows - 1) {
       abAppend(ab, "\r\n", 2);
@@ -346,15 +342,12 @@ void editorProcessKeypress() {
       write(STDOUT_FILENO, "\x1b[H", 3);
       exit(0);
       break;
-
     case HOME_KEY:
       E.cx = 0;
       break;
-
     case END_KEY:
       E.cx = E.screencols - 1;
       break;
-
     case PAGE_UP:
     case PAGE_DOWN:
       {
@@ -363,7 +356,6 @@ void editorProcessKeypress() {
           editorMoveCursor(c == PAGE_UP ? ARROW_UP : ARROW_DOWN);
       }
       break;
-
     case ARROW_UP:
     case ARROW_DOWN:
     case ARROW_LEFT:
@@ -401,14 +393,12 @@ int main() {
    </figure>
 <p>We also use switch statements with multiple cases to map keys like CTRL-Q,all four arrow keys to move the cursor in different directions,Page Down and Page Up,Home,End and Delete keys.This is done using <b>editorKeyProcess()</b> and <b>EditorReadKey()'s</b> function is to read a single keypress as input and return it for formatting.Various formatting operations are done such as clearing and refreshing the screens using their respective functions which makes the interface easier and simple for the user(<b>EditorRefreshScreen(),die(),editorDrawRows()</b>).editorDrawRows() and getWindowSize() are complementary to each other and can be done in 2 different ways,as illustrated in the tutorial.Cursor positions are determined and modified using functions like <b>getCursorPosition</b>,which is then returned into a global construct which stores most useful variables, like number of screenrows and total number of rows etc.</p><br>
 <p>In this chapter, we also create a way to add content to the editor using a buffer-ABUF_INIT.String manipulation and memory allocation is also given importance in this chapter,seen mostly while using functions related to the buffer.</p><br>
-      
       3.A text viewer<br>
-  
-      <p>This chapter deals with making the text editor more user friendly by including files, scrolling(horizontal and vertical) while mapping some special keys to move up and down the editor page, including interactions of spaces and tabs with text,some small quirks like moving to the end of the line or moving around using the arrow keys and also, a status bar at the bottom of the screen which displays useful information.</p>
-      
-      <textarea>
+      <p>This chapter deals with making the text editor more user friendly by including files, scrolling(horizontal and vertical) while mapping some special keys to move up and down the editor page, including interactions of spaces and tabs with text,some small quirks like moving to the end of the line or moving around using the arrow keys and also, a status bar at the bottom of the screen which displays useful information.</p>     
+<textarea>
 
 /*** includes ***/
+
 #define _DEFAULT_SOURCE
 #define _BSD_SOURCE
 #define _GNU_SOURCE
@@ -509,10 +499,8 @@ int editorReadKey() {
 
   if (c == '\x1b') {
     char seq[3];
-
     if (read(STDIN_FILENO, &seq[0], 1) != 1) return '\x1b';
-    if (read(STDIN_FILENO, &seq[1], 1) != 1) return '\x1b';
-
+    if (read(STDIN_FILENO, &seq[1], 1) != 1) return '\x1b'
     if (seq[0] == '[') {
       if (seq[1] >= '0' && seq[1] <= '9') {
         if (read(STDIN_FILENO, &seq[2], 1) != 1) return '\x1b';
@@ -543,7 +531,6 @@ int editorReadKey() {
         case 'F': return END_KEY;
       }
     }
-
     return '\x1b';
   } else {
     return c;
@@ -725,7 +712,6 @@ void editorDrawRows(struct abuf *ab) {
       if (len > E.screencols) len = E.screencols;
       abAppend(ab, &E.row[filerow].render[E.coloff], len);
     }
-
     abAppend(ab, "\x1b[K", 3);
     abAppend(ab, "\r\n", 2);
   }
@@ -842,16 +828,13 @@ void editorProcessKeypress() {
       write(STDOUT_FILENO, "\x1b[H", 3);
       exit(0);
       break;
-
     case HOME_KEY:
       E.cx = 0;
       break;
-
     case END_KEY:
       if (E.cy < E.numrows)
         E.cx = E.row[E.cy].size;
       break;
-
     case PAGE_UP:
     case PAGE_DOWN:
       {
@@ -861,13 +844,11 @@ void editorProcessKeypress() {
           E.cy = E.rowoff + E.screenrows - 1;
           if (E.cy > E.numrows) E.cy = E.numrows;
         }
-
         int times = E.screenrows;
         while (times--)
           editorMoveCursor(c == PAGE_UP ? ARROW_UP : ARROW_DOWN);
       }
       break;
-
     case ARROW_UP:
     case ARROW_DOWN:
     case ARROW_LEFT:
@@ -925,11 +906,10 @@ int main(int argc, char *argv[]) {
    
    4.A Text Editor<br>
   
- <p>In this chapter,we modfify our text viewer into a proper text editor by including operations like inserting characters,saving files to disk, creating a more efficient status bar by indicating modifications,warnings,more errors possible, deletion of characters and insertion of new lines using the keyboard. This converts the text viewer into a proper text editor with all the essential operations available.</p>
-   
+ <p>In this chapter,we modfify our text viewer into a proper text editor by including operations like inserting characters,saving files to disk, creating a more efficient status bar by indicating modifications,warnings,more errors possible, deletion of characters and insertion of new lines using the keyboard. This converts the text viewer into a proper text editor with all the essential operations available.</p> 
    <textarea>
-
 /*** includes ***/
+
 #define _DEFAULT_SOURCE
 #define _BSD_SOURCE
 #define _GNU_SOURCE
@@ -1040,10 +1020,8 @@ int editorReadKey() {
 
   if (c == '\x1b') {
     char seq[3];
-
     if (read(STDIN_FILENO, &seq[0], 1) != 1) return '\x1b';
     if (read(STDIN_FILENO, &seq[1], 1) != 1) return '\x1b';
-
     if (seq[0] == '[') {
       if (seq[1] >= '0' && seq[1] <= '9') {
         if (read(STDIN_FILENO, &seq[2], 1) != 1) return '\x1b';
@@ -1074,7 +1052,6 @@ int editorReadKey() {
         case 'F': return END_KEY;
       }
     }
-
     return '\x1b';
   } else {
     return c;
@@ -1390,7 +1367,6 @@ void editorDrawRows(struct abuf *ab) {
       if (len > E.screencols) len = E.screencols;
       abAppend(ab, &E.row[filerow].render[E.coloff], len);
     }
-
     abAppend(ab, "\x1b[K", 3);
     abAppend(ab, "\r\n", 2);
   }
@@ -1470,7 +1446,6 @@ char *editorPrompt(char *prompt) {
   while (1) {
     editorSetStatusMessage(prompt, buf);
     editorRefreshScreen();
-
     int c = editorReadKey();
     if (c == DEL_KEY || c == CTRL_KEY('h') || c == BACKSPACE) {
       if (buflen != 0) buf[--buflen] = '\0';
@@ -1542,7 +1517,6 @@ void editorProcessKeypress() {
     case '\r':
       editorInsertNewline();
       break;
-
     case CTRL_KEY('q'):
       if (E.dirty && quit_times > 0) {
         editorSetStatusMessage("WARNING!!! File has unsaved changes. "
@@ -1554,27 +1528,22 @@ void editorProcessKeypress() {
       write(STDOUT_FILENO, "\x1b[H", 3);
       exit(0);
       break;
-
     case CTRL_KEY('s'):
       editorSave();
       break;
-
     case HOME_KEY:
       E.cx = 0;
       break;
-
     case END_KEY:
       if (E.cy < E.numrows)
         E.cx = E.row[E.cy].size;
       break;
-
     case BACKSPACE:
     case CTRL_KEY('h'):
     case DEL_KEY:
       if (c == DEL_KEY) editorMoveCursor(ARROW_RIGHT);
       editorDelChar();
       break;
-
     case PAGE_UP:
     case PAGE_DOWN:
       {
@@ -1584,24 +1553,20 @@ void editorProcessKeypress() {
           E.cy = E.rowoff + E.screenrows - 1;
           if (E.cy > E.numrows) E.cy = E.numrows;
         }
-
         int times = E.screenrows;
         while (times--)
           editorMoveCursor(c == PAGE_UP ? ARROW_UP : ARROW_DOWN);
       }
       break;
-
     case ARROW_UP:
     case ARROW_DOWN:
     case ARROW_LEFT:
     case ARROW_RIGHT:
       editorMoveCursor(c);
       break;
-
     case CTRL_KEY('l'):
     case '\x1b':
       break;
-
     default:
       editorInsertChar(c);
       break;
@@ -1645,7 +1610,6 @@ int main(int argc, char *argv[]) {
 
   return 0;
      }
-
 </textarea>
      
  <p>In this chapter, we convert a text viewer into a text editor.One of the first operations is to insert a character into the editor so we see it on the screen. All the code before this was meant for processing the input from the keyboard but did not display it on the screen.We use the function <b>editorRowInsertChar()</b> to insert a character by moving around the memory of 2 strings-the one which we want to insert and the present row. Since we've turned off all the flags in chapter 1,special keys like Enter and Backspace do not work and instead return an ASCII value. More cases are made in <b>editorKeyProcess()</b> in order to handle these keys.</p>
@@ -1659,13 +1623,12 @@ int main(int argc, char *argv[]) {
      <figcaption>Using Save Function</figcaption>
      <img src="https://imgur.com/i1Y87Od.png" alt="Chapter 4-3" width="400" height="300">
      <figcaption>File Saved to Disk</figcaption>
-  </figure>	
-       
+  </figure>	 
        5.Search operations<br>
 <p>This chapter deals with search operations and all the possible ways to utilize those operations. It consists of implementing a search function,then using arrow keys to search back and forth and returning the cursor positions when finished.</p>
      <textarea>
-
 /*** includes ***/
+ 
 #define _DEFAULT_SOURCE
 #define _BSD_SOURCE
 #define _GNU_SOURCE
@@ -1776,10 +1739,8 @@ int editorReadKey() {
 
   if (c == '\x1b') {
     char seq[3];
-
     if (read(STDIN_FILENO, &seq[0], 1) != 1) return '\x1b';
     if (read(STDIN_FILENO, &seq[1], 1) != 1) return '\x1b';
-
     if (seq[0] == '[') {
       if (seq[1] >= '0' && seq[1] <= '9') {
         if (read(STDIN_FILENO, &seq[2], 1) != 1) return '\x1b';
@@ -1810,7 +1771,6 @@ int editorReadKey() {
         case 'F': return END_KEY;
       }
     }
-
     return '\x1b';
   } else {
     return c;
@@ -1869,7 +1829,6 @@ int editorRowRxToCx(erow *row, int rx) {
     if (row->chars[cx] == '\t')
       cur_rx += (KILO_TAB_STOP - 1) - (cur_rx % KILO_TAB_STOP);
     cur_rx++;
-
     if (cur_rx > rx) return cx;
   }
   return cx;
@@ -2095,7 +2054,6 @@ void editorFindCallback(char *query, int key) {
     current += direction;
     if (current == -1) current = E.numrows - 1;
     else if (current == E.numrows) current = 0;
-
     erow *row = &E.row[current];
     char *match = strstr(row->render, query);
     if (match) {
@@ -2197,7 +2155,6 @@ void editorDrawRows(struct abuf *ab) {
       if (len > E.screencols) len = E.screencols;
       abAppend(ab, &E.row[filerow].render[E.coloff], len);
     }
-
     abAppend(ab, "\x1b[K", 3);
     abAppend(ab, "\r\n", 2);
   }
@@ -2277,7 +2234,6 @@ char *editorPrompt(char *prompt, void (*callback)(char *, int)) {
   while (1) {
     editorSetStatusMessage(prompt, buf);
     editorRefreshScreen();
-
     int c = editorReadKey();
     if (c == DEL_KEY || c == CTRL_KEY('h') || c == BACKSPACE) {
       if (buflen != 0) buf[--buflen] = '\0';
@@ -2300,7 +2256,6 @@ char *editorPrompt(char *prompt, void (*callback)(char *, int)) {
       buf[buflen++] = c;
       buf[buflen] = '\0';
     }
-
     if (callback) callback(buf, c);
   }
 }
@@ -2353,7 +2308,6 @@ void editorProcessKeypress() {
     case '\r':
       editorInsertNewline();
       break;
-
     case CTRL_KEY('q'):
       if (E.dirty && quit_times > 0) {
         editorSetStatusMessage("WARNING!!! File has unsaved changes. "
@@ -2365,31 +2319,25 @@ void editorProcessKeypress() {
       write(STDOUT_FILENO, "\x1b[H", 3);
       exit(0);
       break;
-
     case CTRL_KEY('s'):
       editorSave();
       break;
-
     case HOME_KEY:
       E.cx = 0;
       break;
-
     case END_KEY:
       if (E.cy < E.numrows)
         E.cx = E.row[E.cy].size;
       break;
-
     case CTRL_KEY('f'):
       editorFind();
       break;
-
     case BACKSPACE:
     case CTRL_KEY('h'):
     case DEL_KEY:
       if (c == DEL_KEY) editorMoveCursor(ARROW_RIGHT);
       editorDelChar();
       break;
-
     case PAGE_UP:
     case PAGE_DOWN:
       {
@@ -2399,24 +2347,20 @@ void editorProcessKeypress() {
           E.cy = E.rowoff + E.screenrows - 1;
           if (E.cy > E.numrows) E.cy = E.numrows;
         }
-
         int times = E.screenrows;
         while (times--)
           editorMoveCursor(c == PAGE_UP ? ARROW_UP : ARROW_DOWN);
       }
       break;
-
     case ARROW_UP:
     case ARROW_DOWN:
     case ARROW_LEFT:
     case ARROW_RIGHT:
       editorMoveCursor(c);
       break;
-
     case CTRL_KEY('l'):
     case '\x1b':
       break;
-
     default:
       editorInsertChar(c);
       break;
@@ -2475,7 +2419,6 @@ int main(int argc, char *argv[]) {
        6.Syntax highlighting<br>
        <p>This chapter deals with syntax highlighting and filetype detection.</p>
  <textarea>
-
 /*** includes ***/
 #define _DEFAULT_SOURCE
 #define _BSD_SOURCE
@@ -2638,10 +2581,8 @@ int editorReadKey() {
 
   if (c == '\x1b') {
     char seq[3];
-
     if (read(STDIN_FILENO, &seq[0], 1) != 1) return '\x1b';
     if (read(STDIN_FILENO, &seq[1], 1) != 1) return '\x1b';
-
     if (seq[0] == '[') {
       if (seq[1] >= '0' && seq[1] <= '9') {
         if (read(STDIN_FILENO, &seq[2], 1) != 1) return '\x1b';
@@ -2672,7 +2613,6 @@ int editorReadKey() {
         case 'F': return END_KEY;
       }
     }
-
     return '\x1b';
   } else {
     return c;
@@ -2741,14 +2681,12 @@ void editorUpdateSyntax(erow *row) {
   while (i < row->rsize) {
     char c = row->render[i];
     unsigned char prev_hl = (i > 0) ? row->hl[i - 1] : HL_NORMAL;
-
     if (scs_len && !in_string && !in_comment) {
       if (!strncmp(&row->render[i], scs, scs_len)) {
         memset(&row->hl[i], HL_COMMENT, row->rsize - i);
         break;
       }
     }
-
     if (mcs_len && mce_len && !in_string) {
       if (in_comment) {
         row->hl[i] = HL_MLCOMMENT;
@@ -2769,7 +2707,6 @@ void editorUpdateSyntax(erow *row) {
         continue;
       }
     }
-
     if (E.syntax->flags & HL_HIGHLIGHT_STRINGS) {
       if (in_string) {
         row->hl[i] = HL_STRING;
@@ -2791,7 +2728,6 @@ void editorUpdateSyntax(erow *row) {
         }
       }
     }
-
     if (E.syntax->flags & HL_HIGHLIGHT_NUMBERS) {
       if ((isdigit(c) && (prev_sep || prev_hl == HL_NUMBER)) ||
           (c == '.' && prev_hl == HL_NUMBER)) {
@@ -2801,14 +2737,12 @@ void editorUpdateSyntax(erow *row) {
         continue;
       }
     }
-
     if (prev_sep) {
       int j;
       for (j = 0; keywords[j]; j++) {
         int klen = strlen(keywords[j]);
         int kw2 = keywords[j][klen - 1] == '|';
         if (kw2) klen--;
-
         if (!strncmp(&row->render[i], keywords[j], klen) &&
             is_separator(row->render[i + klen])) {
           memset(&row->hl[i], kw2 ? HL_KEYWORD2 : HL_KEYWORD1, klen);
@@ -2821,7 +2755,6 @@ void editorUpdateSyntax(erow *row) {
         continue;
       }
     }
-
     prev_sep = is_separator(c);
     i++;
   }
@@ -2858,12 +2791,10 @@ void editorSelectSyntaxHighlight() {
         int patlen = strlen(s->filematch[i]);
         if (s->filematch[i][0] != '.' || p[patlen] == '\0') {
           E.syntax = s;
-
           int filerow;
           for (filerow = 0; filerow < E.numrows; filerow++) {
             editorUpdateSyntax(&E.row[filerow]);
           }
-
           return;
         }
       }
@@ -2892,7 +2823,6 @@ int editorRowRxToCx(erow *row, int rx) {
     if (row->chars[cx] == '\t')
       cur_rx += (KILO_TAB_STOP - 1) - (cur_rx % KILO_TAB_STOP);
     cur_rx++;
-
     if (cur_rx > rx) return cx;
   }
   return cx;
@@ -3139,7 +3069,6 @@ void editorFindCallback(char *query, int key) {
     current += direction;
     if (current == -1) current = E.numrows - 1;
     else if (current == E.numrows) current = 0;
-
     erow *row = &E.row[current];
     char *match = strstr(row->render, query);
     if (match) {
@@ -3147,7 +3076,6 @@ void editorFindCallback(char *query, int key) {
       E.cy = current;
       E.cx = editorRowRxToCx(row, match - row->render);
       E.rowoff = E.numrows;
-
       saved_hl_line = current;
       saved_hl = malloc(row->rsize);
       memcpy(saved_hl, row->hl, row->rsize);
@@ -3278,7 +3206,6 @@ void editorDrawRows(struct abuf *ab) {
       }
       abAppend(ab, "\x1b[39m", 5);
     }
-
     abAppend(ab, "\x1b[K", 3);
     abAppend(ab, "\r\n", 2);
   }
@@ -3358,7 +3285,6 @@ char *editorPrompt(char *prompt, void (*callback)(char *, int)) {
   while (1) {
     editorSetStatusMessage(prompt, buf);
     editorRefreshScreen();
-
     int c = editorReadKey();
     if (c == DEL_KEY || c == CTRL_KEY('h') || c == BACKSPACE) {
       if (buflen != 0) buf[--buflen] = '\0';
@@ -3381,7 +3307,6 @@ char *editorPrompt(char *prompt, void (*callback)(char *, int)) {
       buf[buflen++] = c;
       buf[buflen] = '\0';
     }
-
     if (callback) callback(buf, c);
   }
 }
@@ -3434,7 +3359,6 @@ void editorProcessKeypress() {
     case '\r':
       editorInsertNewline();
       break;
-
     case CTRL_KEY('q'):
       if (E.dirty && quit_times > 0) {
         editorSetStatusMessage("WARNING!!! File has unsaved changes. "
@@ -3446,31 +3370,25 @@ void editorProcessKeypress() {
       write(STDOUT_FILENO, "\x1b[H", 3);
       exit(0);
       break;
-
     case CTRL_KEY('s'):
       editorSave();
       break;
-
     case HOME_KEY:
       E.cx = 0;
       break;
-
     case END_KEY:
       if (E.cy < E.numrows)
         E.cx = E.row[E.cy].size;
       break;
-
     case CTRL_KEY('f'):
       editorFind();
       break;
-
     case BACKSPACE:
     case CTRL_KEY('h'):
     case DEL_KEY:
       if (c == DEL_KEY) editorMoveCursor(ARROW_RIGHT);
       editorDelChar();
       break;
-
     case PAGE_UP:
     case PAGE_DOWN:
       {
@@ -3480,24 +3398,20 @@ void editorProcessKeypress() {
           E.cy = E.rowoff + E.screenrows - 1;
           if (E.cy > E.numrows) E.cy = E.numrows;
         }
-
         int times = E.screenrows;
         while (times--)
           editorMoveCursor(c == PAGE_UP ? ARROW_UP : ARROW_DOWN);
       }
       break;
-
     case ARROW_UP:
     case ARROW_DOWN:
     case ARROW_LEFT:
     case ARROW_RIGHT:
       editorMoveCursor(c);
       break;
-
     case CTRL_KEY('l'):
     case '\x1b':
       break;
-
     default:
       editorInsertChar(c);
       break;
@@ -3559,8 +3473,6 @@ int main(int argc, char *argv[]) {
   
    <a href="https://viewsourcecode.org/snaptoken/kilo/index.html">Link to actual editor guide</a>
    <br><br>
-   </ol>
-   Scroll to top
 </body>
 </html>
 </noscript>
