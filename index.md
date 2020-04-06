@@ -17,7 +17,7 @@
 <p>So the first 2 steps include installing a C compiler and enabling raw mode in terminal,mainly because canonical mode, the default mode in all terminals does not work for applications with complex user interfaces where there are many processes to be run at once. Installing a compiler can be done pretty easily by using administrator commands in the respective operating systems, or installing an IDE in some cases,like Windows.</p><br>
 <b>1.Enabling raw mode</b><br><br>
           
-<textarea>
+<textarea style="width:50vw;height:30vh;margin-left:auto;margin-right:auto;">
  
  /*** includes **/
 #include ctype.h
