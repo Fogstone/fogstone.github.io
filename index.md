@@ -1614,8 +1614,7 @@ int main(int argc, char *argv[]) {
      
  <p>In this chapter, we convert a text viewer into a text editor.One of the first operations is to insert a character into the editor so we see it on the screen. All the code before this was meant for processing the input from the keyboard but did not display it on the screen.We use the function <b>editorRowInsertChar()</b> to insert a character by moving around the memory of 2 strings-the one which we want to insert and the present row. Since we've turned off all the flags in chapter 1,special keys like Enter and Backspace do not work and instead return an ASCII value. More cases are made in <b>editorKeyProcess()</b> in order to handle these keys.<br>
      Next up is saving your files to disk. We use the function <b>editorSave()</b> to copy all the text into a buffer,dynamically allocate memory to it to store in the buffer. Ctrl-S is mapped to this function which saves a file into the buffer. More conditions are added to handle error messages and display modifications to the file which notify the user through the status bar established in Chapter 4. An additional condition is also added to the code which warns the user about quitting without saving and prevents possible loss of data.<br>
-     After this, we use <b>editorDelChar()</b> and <b>editorRowAppendString()</b> to add special cases which include using Backspace and Delete, mentioned earlier. The Enter Key is also mapped to <b>editorRowAppendString()</b> and <b>editorInsertNewLine()</b> in order to displace strings and insert new lines,respectively. At the end after mapping the special keys, the code gives the user the option to Save As.. and give their file a new name.</p>
-     
+     After this, we use <b>editorDelChar()</b> and <b>editorRowAppendString()</b> to add special cases which include using Backspace and Delete, mentioned earlier. The Enter Key is also mapped to <b>editorRowAppendString()</b> and <b>editorInsertNewLine()</b> in order to displace strings and insert new lines,respectively. At the end after mapping the special keys, the code gives the user the option to Save As.. and give their file a new name.</p><br>
   <figure>
      <img src="https://imgur.com/goANeI2.png" alt="Chapter4-1" width="400" height="300"> 
      <figcaption>Text Editor</figcaption>
@@ -1623,7 +1622,9 @@ int main(int argc, char *argv[]) {
      <figcaption>Using Save Function</figcaption>
      <img src="https://imgur.com/i1Y87Od.png" alt="Chapter 4-3" width="400" height="300">
      <figcaption>File Saved to Disk</figcaption>
-  </figure>	<br>
+  </figure>	
+  
+  <br>
        5.Search operations<br>
 <p>This chapter deals with search operations and all the possible ways to utilize those operations. It consists of implementing a search function,then using arrow keys to search back and forth and returning the cursor positions when finished.</p>
      <textarea>
