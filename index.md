@@ -1628,9 +1628,11 @@ int main(int argc, char *argv[]) {
 <p>This chapter deals with search operations and all the possible ways to utilize those operations. It consists of implementing a search function,then using arrow keys to search back and forth and returning the cursor positions when finished.</p>
      <textarea>
 "/*** includes ***/
+
 #define _DEFAULT_SOURCE
 #define _BSD_SOURCE
 #define _GNU_SOURCE
+ 
 #include ctype.h
 #include errno.h
 #include fcntl.h
