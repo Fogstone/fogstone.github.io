@@ -1645,13 +1645,11 @@ int main(int argc, char *argv[]) {
 #include termios.h
 #include time.h
 #include unistd.h
- 
 /*** defines ***/
 
 #define KILO_VERSION "0.0.1"
 #define KILO_TAB_STOP 8
-#define KILO_QUIT_TIMES 3
-
+#define KILO_QUIT_TIMES 
 #define CTRL_KEY(k) ((k) & 0x1f)
 
 enum editorKey {
@@ -1667,6 +1665,7 @@ enum editorKey {
   PAGE_DOWN
 };
 /** data ***/
+
 typedef struct erow {
   int size;
   int rsize;
@@ -1688,7 +1687,6 @@ struct editorConfig {
   time_t statusmsg_time;
   struct termios orig_termios;
 };
-
 struct editorConfig E;
 
 /*** prototypes ***/
