@@ -1622,11 +1622,11 @@ int main(int argc, char *argv[]) {
      <figcaption>Using Save Function</figcaption>
      <img src="https://imgur.com/i1Y87Od.png" alt="Chapter 4-3" width="400" height="300">
      <figcaption>File Saved to Disk</figcaption>
-  </figure>	
+  </figure>	<br>
+
   
-  <br>
-       5.Search operations<br>
-<p>This chapter deals with search operations and all the possible ways to utilize those operations. It consists of implementing a search function,then using arrow keys to search back and forth and returning the cursor positions when finished.</p>
+   
+5.Search Operations<br><p>This chapter deals with search operations and all the possible ways to utilize those operations. It consists of implementing a search function,then using arrow keys to search back and forth and returning the cursor positions when finished.</p>
      <textarea>
 "/*** includes ***/
 
