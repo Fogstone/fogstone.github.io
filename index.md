@@ -2404,7 +2404,9 @@ int main(int argc, char *argv[]) {
        
    
    
-   </textarea><br><p>At this point,most of the necessary functions have already been implemented. This is one of the operations that makes the interface far easier to use- a search function. First, we use <b>editorFind()</b> to check whether or not we want to search for something, then use <b>editorRowRxtoCx()</b> to iterate through all the rows,searching for the specified string. We then map Ctrl-F to the <b>editorFind()</b> function for easy access. To make searching easier, <b>editorPrompt()</b> is used in order to find the result while the string is being typed. After that, small adjustments and conditions are added to <b>editorFindCallBack()</b> so that arrow keys can be used to search back and forth and that the cursor regains its original position after searching.</p><br><figure> 
+   </textarea><br><p>At this point,most of the necessary functions have already been implemented. This is one of the operations that makes the interface far easier to use- a search function. First, we use <b>editorFind()</b> to check whether or not we want to search for something, then use <b>editorRowRxtoCx()</b> to iterate through all the rows,searching for the specified string. We then map Ctrl-F to the <b>editorFind()</b> function for easy access. To make searching easier, <b>editorPrompt()</b> is used in order to find the result while the string is being typed. After that, small adjustments and conditions are added to <b>editorFindCallBack()</b> so that arrow keys can be used to search back and forth and that the cursor regains its original position after searching.</p><br>
+   
+   <figure> 
    <img src="https://imgur.com/11PJLX9.png" alt="Chapter5-1" width="400" height="300">
    <figcaption>Input and Output displayed on screen</figcaption>
    <img src="https://imgur.com/rIo9w6q.png" alt="Chapter5-2" width="400" height="300">
