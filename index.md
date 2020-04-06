@@ -3459,13 +3459,13 @@ int main(int argc, char *argv[]) {
 
    <p>This chapter mainly deals with syntax highlighting. First we use a function <b>editorUpdateSyntax()</b> to edit each digit in the colour red, then update that information in <b>editorUpdateRow()</b> which iterates each row looking for integers and assigns HL_NUMBER to them which changes the colour to red. <b>editorSyntaxtoColor()</b> is used to match each HL_ to return a certain integer which is then used in an escape sequence to change colour. A variable current_color is used to check whether the selected character is of a special HL_ type or not. A small adjustment is made to highlight the search results and remove the highlight once finished.</p>
   <p> The second part of the chapter deals with filetype detection and saving-a new structure is created to hold the filename and the type. The necessary modifications are made to <b>editorDrawStatusBar()</b> and <b>editorUpdateSyntax()</b> to hold the attributes of the file.<b>editorSelectSyntaxHighlight()</b> is used to check the filetype by looping through the HLBD array for the proper attribute.</p>
-   <p>More additions are made to the structure and <b>editorUpdateSyntax()</b> in order to highlight strings, single line comments,multiple line comments and single line comments inside multiple line comments.This concludes the building of the Antirez Kilo Editor.</p>
+   <p>More additions are made to the structure and <b>editorUpdateSyntax()</b> in order to highlight strings, single line comments,multiple line comments and single line comments inside multiple line comments.This concludes the building of the Antirez Kilo Editor.</p><br>
 
   <figure>
-   <img src="https://imgur.com/G2w7L82.png " alt="CHapter6" width="600" height="400" class="image">
+   <img src="https://imgur.com/G2w7L82.png " alt="Capter6" width="600" height="400">
    <figcaption>Proper syntax highlighting for all types</figcaption>
   <figure>
-
+<br>
 
    
    <h2>References</h2><br>
