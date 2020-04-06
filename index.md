@@ -1,4 +1,11 @@
->noscript>
+<style>
+     textarea {
+          width: 50vw;
+          height: 30vh;
+	  margin-left: auto;
+	  margin-right: auto;
+     }
+</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8"> 
 <h1>A Blog on Antirez Kilo Editor</h1>
@@ -3476,4 +3483,4 @@ int main(int argc, char *argv[]) {
    <br><br>
 </body>
 </html>
-</noscript>
+
